@@ -107,7 +107,7 @@ class SongsHandler {
       await this._service.editSongById(id, request.payload);
       return {
         status: 'success',
-        message: 'Catatan berhasil diperbarui',
+        message: 'lagu berhasil diperbarui',
       };
     } catch (error) {
       if (error instanceof ClientError) {
