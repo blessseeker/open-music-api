@@ -130,13 +130,13 @@ class SongsHandler {
     }
   }
 
-  async deleteSongByIdHandler(request) {
+  async deleteSongByIdHandler(request, h) {
     try {
       const { id } = request.params;
       await this._service.deleteSongById(id);
       return {
         status: 'success',
-        message: 'Catatan berhasil dihapus',
+        message: 'lagu berhasil dihapus',
       };
     } catch (error) {
       if (error instanceof ClientError) {
