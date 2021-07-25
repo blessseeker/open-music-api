@@ -2,6 +2,7 @@
 const { nanoid } = require('nanoid');
 const { Pool } = require('pg');
 const InvariantError = require('../../exceptions/InvariantError');
+const { getSongs } = require('../../utils');
 
 class SongsService {
   constructor() {
@@ -33,6 +34,11 @@ class SongsService {
     }
 
     return result.rows[0].id;
+  }
+
+  async getSongs() {
+    const result = await this._pool.query('SELECT*FROM tbl_songs');
+    return result.rows.map(getSongs);
   }
 }
 
