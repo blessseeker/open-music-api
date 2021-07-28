@@ -1,10 +1,4 @@
-const getSongs = ({ id, title, performer }) => ({
-  id,
-  title,
-  performer,
-});
-
-const getSongById = ({
+const mapDBToModel = ({
   id,
   title,
   year,
@@ -24,4 +18,4 @@ const getSongById = ({
   updatedAt: updated_at,
 });
 
-module.exports = { getSongs, getSongById };
+module.exports = { mapDBToModel };
