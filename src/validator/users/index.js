@@ -1,11 +1,13 @@
-const UsersHandler = require('./handler');
-const routes = require('./routes');
+const InvariantError = require('../../exceptions/InvariantError');
+const { UserPayloadSchema } = require('./schema');
 
-module.exports = {
-  name: 'users',
-  version: '1.0.0',
-  register: async (server, { service, validator }) => {
-    const usersHandler = new UsersHandler(service, validator);
-    server.route(routes(usersHandler));
+const UsersValidator = {
+  validateUserPayload: (payload) => {
+    const validationResult = UserPayloadSchema.validate(payload);
+
+    if (validationResult.error) {
+      throw new InvariantError(validationResult.error.message);
+    }
   },
 };
+module.exports = UsersValidator;
