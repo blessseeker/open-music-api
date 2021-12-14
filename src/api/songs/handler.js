@@ -59,7 +59,7 @@ class SongsHandler {
     }
   }
 
-  async getSongsHandler() {
+  async getSongsHandler(request, h) {
     try {
       const songs = await this._service.getSongs();
       return {
